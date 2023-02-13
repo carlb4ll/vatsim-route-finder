@@ -1,5 +1,7 @@
 async function getRoutes() {
-  const response = await fetch("./routes.json");
+  const response = await fetch(
+    "https://github.com/carlb4ll/vatsim-route-finder/blob/02b539d41b3166951da4f5bd5e985cf6705b1c3b/routes.json"
+  );
   const routes = await response.json();
   const aircraft = [...new Set(routes.map((item) => item.Reg))];
 
