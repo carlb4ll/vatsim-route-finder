@@ -39,7 +39,7 @@ function getRandomInt(max) {
 
 //function to populate the route into the HTML
 function populateRoute(obj) {
-  const header = document.querySelector("header");
+  const header = document.getElementById("test");
   const fragment = document.createDocumentFragment();
 
   const myAirline = document.createElement("h1");
@@ -82,7 +82,6 @@ async function getHomeLocation() {
   }
 }
 
-
 //Reset Locations
 function resetLocation() {
   getHomeLocation();
@@ -106,4 +105,9 @@ function saveLocation(arr) {
   });
   aircraftLocation[index].Location = arr.To;
   localStorage.setItem("Location", JSON.stringify(aircraftLocation));
+}
+
+function clearFlight() {
+  console.log("doing something");
+  document.getElementById("test").innerHTML = "";
 }
