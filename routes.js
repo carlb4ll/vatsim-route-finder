@@ -108,6 +108,5 @@ function saveLocation(arr) {
 }
 
 function clearFlight() {
-  console.log("doing something");
   document.getElementById("test").innerHTML = "";
 }
