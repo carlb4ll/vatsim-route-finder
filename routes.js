@@ -105,6 +105,46 @@ let baseLocation = [
     Reg: "EI-ENA",
     Location: "EGGP",
   },
+  {
+    Reg: "G-UZMG",
+    Location: "EGKK",
+  },
+  {
+    Reg: "EI-GXN",
+    Location: "EGSS",
+  },
+  {
+    Reg: "SE-DMO",
+    Location: "EKCH",
+  },
+  {
+    Reg: "N4226J",
+    Location: "KJFK",
+  },
+  {
+    Reg: "TF-PLA",
+    Location: "BIKF",
+  },
+  {
+    Reg: "D-AIHP",
+    Location: "EDDM",
+  },
+  {
+    Reg: "G-VGAS",
+    Location: "EGLL",
+  },
+  {
+    Reg: "G-VWAN",
+    Location: "EGCC",
+  },
+  {
+    Reg: "G-JJII",
+    Location: "EGLL",
+  },
+  {
+    Reg: "PH-BXW",
+    Location: "EHAM",
+  },
 ];
 
 //Reset Locations
