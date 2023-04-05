@@ -1,3 +1,5 @@
+getLocation("Location");
+
 async function getRoutes() {
   const response = await fetch("routes.json");
   const routes = await response.json();
@@ -8,7 +10,6 @@ async function getRoutes() {
   let currentAircraft = aircraft[randomAircraft];
 
   //find location from local storage
-  getLocation("Location");
 
   //Find location of chosen aircraft
   let currentAircraftLocation = aircraftLocation.find(
@@ -30,6 +31,8 @@ async function getRoutes() {
 
   //test saving location
   saveLocation(route);
+
+  getLocation("Location");
 }
 
 // Randomise function
@@ -43,11 +46,11 @@ function populateRoute(obj) {
   const fragment = document.createDocumentFragment();
 
   const myAirline = document.createElement("h1");
-  const myDeparture = document.createElement("h3");
-  const myDestination = document.createElement("h3");
-  const myFlightnumber = document.createElement("h4");
-  const myCallsign = document.createElement("h4");
-  const myBlocktime = document.createElement("h4");
+  const myDeparture = document.createElement("h2");
+  const myDestination = document.createElement("h2");
+  const myFlightnumber = document.createElement("h3");
+  const myCallsign = document.createElement("h3");
+  const myBlocktime = document.createElement("h3");
 
   myAirline.textContent = `${obj.Airline} | ${obj.Aircraft} | ${obj.Reg}`;
   myDeparture.textContent = `Departure: ${obj.Departure} - ${obj.From}`;
@@ -66,9 +69,8 @@ function populateRoute(obj) {
   header.appendChild(fragment);
 }
 
-// Aircraft location
-
-async function getHomeLocation() {
+//Reset Locations
+async function resetLocation() {
   try {
     const response = await fetch("homeLocation.json");
     if (!response.ok) {
@@ -80,12 +82,8 @@ async function getHomeLocation() {
   } catch (error) {
     console.error("Fetch error", error);
   }
-}
-
-//Reset Locations
-function resetLocation() {
-  getHomeLocation();
   localStorage.setItem("Location", JSON.stringify(baseLocation));
+  getLocation("Location");
 }
 
 // Get Location
@@ -95,6 +93,16 @@ function getLocation(name) {
     console.log("local-storage", aircraftLocation);
   } else {
     console.log("no location data");
+  }
+  document.getElementById("myTable").innerHTML = "";
+  let table = document.getElementById("myTable");
+
+  for (let i = 0; i < aircraftLocation.length; i++) {
+    let row = `<tr>
+            <td>${aircraftLocation[i].Reg}</td>
+            <td>${aircraftLocation[i].Location}</td>
+          </tr>`;
+    table.innerHTML += row;
   }
 }
 

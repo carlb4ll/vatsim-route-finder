@@ -4,18 +4,84 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link rel="stylesheet" href="style.css" />
     <title>Vatsim Route Finder</title>
   </head>
   <body>
-    <button onclick="getRoutes()">Find Flight</button>
-    <header></header>
-    <ul id="location-list"></ul>
-    <div id="test"></div>
+    <div class="page-wrapper">
+      <header>
+        <h1 class="title">Vatsim Route Finder</h1>
+        <hr />
+      </header>
+      <div class="row">
+        <div class="column">
+          <div class="card">
+            <div class="tools">
+              <div class="card-circle">
+                <span class="red box"></span>
+              </div>
+              <div class="card-circle">
+                <span class="yellow box"></span>
+              </div>
+              <div class="card-circle">
+                <span class="green box"></span>
+              </div>
+            </div>
+            <div class="card-content">
+              <div id="test"></div>
+            </div>
+          </div>
+          <div class="button-container">
+            <button class="learn-more" onclick="getRoutes()">
+              <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+              </span>
+              <span class="button-text">Find Flight</span>
+            </button>
+            <button class="learn-more" onclick="resetLocation()">
+              <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+              </span>
+              <span class="button-text">Back to base</span>
+            </button>
+            <button class="learn-more" onclick="clearFlight()">
+              <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+              </span>
+              <span class="button-text">Clear</span>
+            </button>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="tools">
+              <div class="card-circle">
+                <span class="red box"></span>
+              </div>
+              <div class="card-circle">
+                <span class="yellow box"></span>
+              </div>
+              <div class="card-circle">
+                <span class="green box"></span>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="table-container">
+                <table class="route-table">
+                  <tr>
+                    <th>Reg</th>
+                    <th>Location</th>
+                  </tr>
 
-    <button onclick="saveLocation()">Accept Flight</button>
-    <button onclick="resetLocation()">All Aircraft back to base</button>
-    <button onclick="clearFlight()">Clear</button>
+                  <tbody id="myTable"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="/routes.js"></script>
   </body>
 </html>
