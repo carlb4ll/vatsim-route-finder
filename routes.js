@@ -37,9 +37,11 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-// function to populate the route into the HTML
+//function to populate the route into the HTML
 function populateRoute(obj) {
   const header = document.querySelector("header");
+  const fragment = document.createDocumentFragment();
+
   const myAirline = document.createElement("h1");
   const myDeparture = document.createElement("h3");
   const myDestination = document.createElement("h3");
@@ -54,101 +56,36 @@ function populateRoute(obj) {
   myCallsign.textContent = `Callsign: ${obj.Callsign}`;
   myBlocktime.textContent = `Block Time: ${obj["Block Time"]}`;
 
-  header.appendChild(myAirline);
-  header.appendChild(myDeparture);
-  header.appendChild(myDestination);
-  header.appendChild(myFlightnumber);
-  header.appendChild(myCallsign);
-  header.appendChild(myBlocktime);
+  fragment.appendChild(myAirline);
+  fragment.appendChild(myDeparture);
+  fragment.appendChild(myDestination);
+  fragment.appendChild(myFlightnumber);
+  fragment.appendChild(myCallsign);
+  fragment.appendChild(myBlocktime);
+
+  header.appendChild(fragment);
 }
 
 // Aircraft location
 
-let baseLocation = [
-  {
-    Reg: "D-AIEL",
-    Location: "EDDM",
-  },
-  {
-    Reg: "EI-LRA",
-    Location: "EIDW",
-  },
-  {
-    Reg: "C-GOIH",
-    Location: "CYYZ",
-  },
-  {
-    Reg: "G-UZMA",
-    Location: "EGCC",
-  },
-  {
-    Reg: "D-ATUM",
-    Location: "EGCC",
-  },
-  {
-    Reg: "G-JZHV",
-    Location: "EGCC",
-  },
-  {
-    Reg: "G-RUKA",
-    Location: "EGCC",
-  },
-  {
-    Reg: "G-EUXC",
-    Location: "EGLL",
-  },
-  {
-    Reg: "G-NEOS",
-    Location: "EGLL",
-  },
-  {
-    Reg: "EI-ENA",
-    Location: "EGGP",
-  },
-  {
-    Reg: "G-UZMG",
-    Location: "EGKK",
-  },
-  {
-    Reg: "EI-GXN",
-    Location: "EGSS",
-  },
-  {
-    Reg: "SE-DMO",
-    Location: "EKCH",
-  },
-  {
-    Reg: "N4226J",
-    Location: "KJFK",
-  },
-  {
-    Reg: "TF-PLA",
-    Location: "BIKF",
-  },
-  {
-    Reg: "D-AIHP",
-    Location: "EDDM",
-  },
-  {
-    Reg: "G-VGAS",
-    Location: "EGLL",
-  },
-  {
-    Reg: "G-VWAN",
-    Location: "EGCC",
-  },
-  {
-    Reg: "G-JJII",
-    Location: "EGLL",
-  },
-  {
-    Reg: "PH-BXW",
-    Location: "EHAM",
-  },
-];
+async function getHomeLocation() {
+  try {
+    const response = await fetch("homeLocation.json");
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    baseLocation = data;
+    console.log("JSON data", data);
+  } catch (error) {
+    console.error("Fetch error", error);
+  }
+}
+
 
 //Reset Locations
 function resetLocation() {
+  getHomeLocation();
   localStorage.setItem("Location", JSON.stringify(baseLocation));
 }
 
