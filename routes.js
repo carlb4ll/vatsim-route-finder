@@ -26,11 +26,14 @@ async function getRoutes() {
   let randomRoute = getRandomInt(currentRoutes.length);
   let route = currentRoutes[randomRoute];
 
-  //populate the route (function) in the DOM
-  populateRoute(route);
+  //populate route based on checkbox
 
-  //test saving location
-  saveLocation(route);
+  if (document.getElementById("time").checked && route["Block Time"] > "4:00") {
+    saveLocation(route);
+  } else {
+    saveLocation(route);
+    populateRoute(route);
+  }
 
   getLocation("Location");
 }
