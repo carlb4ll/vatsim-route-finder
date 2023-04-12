@@ -78,5 +78,33 @@
   {
     "Reg": "PH-BXW",
     "Location": "EHAM"
+  },
+  {
+    "Reg": "OH-LWD",
+    "Location": "EFHK"
+  },
+  {
+    "Reg": "A7-AME",
+    "Location": "OTHH"
+  },
+  {
+    "Reg": "TC-LGD",
+    "Location": "LTFM"
+  },
+  {
+    "Reg": "N501DN",
+    "Location": "KLAX"
+  },
+  {
+    "Reg": "A6-ERH",
+    "Location": "OMDB"
+  },
+  {
+    "Reg": "A6-EHH",
+    "Location": "OMAA"
+  },
+  {
+    "Reg": "A7-AGC",
+    "Location": "OTHH"
   }
 ]
