@@ -27,8 +27,9 @@ async function getRoutes() {
   let route = currentRoutes[randomRoute];
 
   //populate route based on checkbox
+  let time1 = parseInt(route["Block Time"].replace(":", ""));
 
-  if (document.getElementById("time").checked && route["Block Time"] > "4:00") {
+  if (document.getElementById("time").checked && time1 > 400) {
     saveLocation(route);
   } else {
     saveLocation(route);
